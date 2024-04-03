@@ -80,5 +80,31 @@ public class MyLinkedList<T>{
 		}
 	}
 	
-	
+	public void deleteElement(int pos) throws Exception {
+		if (pos >= counter || pos < 0) throw new Exception("Cannot delete element at this position.");
+		if (isEmpty()) throw new Exception("List is empty.");
+		
+		if (pos == 0) {
+			first = first.getNext();
+			first.setPrevious(null);
+		}
+		else if (pos == counter - 1) {
+			last = last.getPrevious();
+			last.setNext(null);
+		}
+		else {
+			MyListNode temp = first;
+			for (int i = 0; i < pos; i++) {
+				temp = temp.getNext();
+			}
+			
+			MyListNode leftNode = temp.getPrevious();
+			MyListNode rightNode = temp.getNext();
+			
+			leftNode.setNext(rightNode);
+			rightNode.setPrevious(leftNode);
+		}
+		System.gc();
+		counter--;
+	}
 }

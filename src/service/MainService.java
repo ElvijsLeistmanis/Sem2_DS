@@ -13,9 +13,11 @@ public class MainService {
 			myList.print();
 			myList.insertElement(12, 2);
 			myList.print();
+			myList.deleteElement(1);
+			myList.print();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}
+	}
 }
