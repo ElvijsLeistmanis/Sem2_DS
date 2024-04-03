@@ -10,10 +10,15 @@ public class MainService {
 			myList.addElement(23);
 			myList.addElement(103);
 			myList.addElement(-23);
+			myList.addElement(33);
 			myList.print();
 			myList.insertElement(12, 2);
 			myList.print();
-			myList.deleteElement(1);
+			myList.deleteElement(3);
+			myList.print();
+			System.out.println(myList.getElement(1));
+			System.out.println(myList.findElement(23));
+			myList.makeEmpty();
 			myList.print();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

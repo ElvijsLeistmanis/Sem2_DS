@@ -1,5 +1,6 @@
 package datastr;
 
+@SuppressWarnings("rawtypes")
 public class MyLinkedList<T>{
 	private MyListNode first = null;
 	private MyListNode last = null;
@@ -44,7 +45,6 @@ public class MyLinkedList<T>{
 	public void insertElement(T element, int pos) throws Exception {
 		if (element == null) throw new Exception("Bad input value.");
 		if (pos > counter || pos < 0) throw new Exception("Cannot insert element at this position.");
-		
 		
 		if (isEmpty() && pos == 0) {
 			addElement(element);
@@ -106,5 +106,37 @@ public class MyLinkedList<T>{
 		}
 		System.gc();
 		counter--;
+	}
+	
+	public T getElement(int pos) throws Exception {
+		if (isEmpty()) throw new Exception("List is empty.");
+		if (pos < 0 || pos > counter) throw new Exception("Bad position.");
+		
+		MyListNode temp = first;
+		for (int i = 0; i < pos; i++) {
+			temp = temp.getNext();
+		}
+		return (T) temp.getElement();
+	}
+	
+	public boolean findElement(T element) throws Exception {
+		if (isEmpty()) throw new Exception("List is empty.");
+		if (element == null) throw new Exception("Bad element.");
+		
+		MyListNode temp = first;
+		for (int i = 0; i < counter; i++) {
+			if (temp.getElement().equals(element)) {
+				return true;
+			}
+			temp = temp.getNext();
+		}
+		return false;
+	}
+	
+	public void makeEmpty() {
+		first = null;
+		last = null;
+		counter = 0;
+		System.gc();
 	}
 }

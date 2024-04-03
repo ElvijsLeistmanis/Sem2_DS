@@ -1,5 +1,6 @@
 package datastr;
 
+@SuppressWarnings("rawtypes")
 public class MyListNode<T> {
 	private T element;
 	private MyListNode next = null;
